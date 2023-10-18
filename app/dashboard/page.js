@@ -26,10 +26,16 @@ function Dashboard() {
     }, []);
 
     return (
-        <div className='h-screen flex flex-col justify-center'>
-            <h1 className='text-7xl font-bold'>
+        <div className='h-screen flex flex-col justify-center items-center'>
+            <h1 className='flex flex-col font-bold'>
                 Hey! Welcome {user?.name} 😃
+                <input 
+                type="text"
+                placeholder='whats on your mind?'
+                className='focus:outline-none'
+                />
             </h1>
+            <button onClick={logout}>Logout</button>
         </div>
     )
 }

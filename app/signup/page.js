@@ -29,32 +29,32 @@ const SignupPage = () => {
     };
 
     return (
-        <div className="h-screen flex flex-row w-screen items-center justify-around">
+        <div className="bg-gradient-to-r from-cyan-200 to-pink-200 h-screen flex flex-row w-screen items-center justify-around">
             <form className="flex flex-col w-50 p-5 gap-4">
                 <h1 className="text-3xl font-bold">lets get you onboard 😃</h1>
                 <input
                 type="text"
-                placeholder="Name"
+                placeholder="name"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
-                className="border-b p-3 focus:outline-none"
+                className="border-b p-3 focus:outline-none rounded-md"
                 />
                 <input
                 type="email"
-                placeholder="Email"
+                placeholder="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="border-b p-3 focus:outline-none"
+                className="border-b p-3 focus:outline-none rounded-md"
                 />
                 <input
                 type="password"
-                placeholder="Password"
+                placeholder="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="border-b p-3 focus:outline-none"
+                className="border-b p-3 focus:outline-none rounded-md"
                 />
                 <div className="flex flex-col">
-                    <button className="p-2 w-50 bg-cyan-400 rounded-full" type="button" onClick={register}>
+                    <button className="p-2 w-50 bg-cyan-400 rounded-md" type="button" onClick={register}>
                     Register
                     </button>
                     <h1 className="ml-36 text-sm">already have an account? 
