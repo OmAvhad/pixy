@@ -15,6 +15,7 @@ const SignupPage = () => {
             await account.create(ID.unique(), email, password, name);
             login(email, password);
         } catch (error) {
+            alert(error.message)
             console.log(error?.message);
         }
     };
