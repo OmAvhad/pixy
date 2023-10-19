@@ -20,6 +20,9 @@ function Dashboard() {
     };
 
     const post = async () => {
+      if (content === '') {
+        return;
+      }
       try {
         await databases.createDocument(
           '652f9cd6b28b0bed9084',
@@ -59,6 +62,22 @@ function Dashboard() {
         console.log(error);
       }
     };
+
+    const like = async (documentId) => {
+      const databaseId = '652f9cd6b28b0bed9084';
+      const collectionId = '652f9cee591dc18a865d';
+      try {
+        const document = await databases.getDocument(databaseId, collectionId, documentId)
+        if (document.likes) {
+          document.likes.push(user.$id);
+        }
+        console.log(document)
+        const updatedDocument = await databases.updateDocument(databaseId, collectionId, documentId, {"likes":document.likes});
+        console.log(updatedDocument);
+      } catch (error) {
+        console.log(error);
+      }
+    }
 
     useEffect(() => {
         const checkLoggedIn = async () => {
@@ -104,7 +123,11 @@ function Dashboard() {
                 <div className='display-block rounded-md shadow-white' key={post.$id}>
                   <h2 className='text-sm'>{post.name}</h2>
                   <h1 className='overflow-hidden'>{post.content}</h1>
-                  <AiOutlineHeart size={20}/>
+                  <AiOutlineHeart 
+                  className='cursor-pointer'
+                  size={20} 
+                  onClick={() => like(post.$id)}/>
+                  <span className='text-sm'>{post.likes?.length} Likes</span> 
                 </div>
               ))}
             </div>
